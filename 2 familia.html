@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+    <ul ng-app="myApp" ng-controller="namesCtrl">
+        <li ng-repeat="x in students">
+            {{x | myFormat}}
+        </li>
+    </ul>
+    <script>
+        var app = angular.module('myApp', []);
+        app.filter('myFormat', function () {
+            return x => x.name + ' ' + x.surname.charAt(0) + '.'
+        });
+        app.controller('namesCtrl', function ($scope) {
+            $scope.students = [
+                { "name": "Artiom", "surname": "Bucalov"},
+                { "name": "Lucia", "surname": "Spirido"},
+                { "name": "Olexandra", "surname": "Omelcenco"},
+                { "name": "Julia", "surname": "Verenciuc"},
+                { "name": "Corina", "surname": "Stan"},
+                { "name": "Ivetta", "surname": "Scarsgard"},
+                { "name": "Nina", "surname": "Odajiu"},
+                { "name": "Liza", "surname": "Baciu"},
+                { "name": "Vadim", "surname": "Bucalov"}
+            ];
+               });
+    </script>
+</body>
+</html>

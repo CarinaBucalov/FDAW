@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+    <div ng-app="myApp" ng-controller="arrController">
+        <ul>
+            <li ng-repeat="x in students | filter : {'note' : 7}">{{x.student + ", " + x.note + ", " + x.group}}</li>
+        </ul>
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('arrController', function ($scope) {
+            $scope.students = [
+                  { "student": "Artiom", "note": 4},
+                { "student": "Corina", "note": 9},
+                { "student": "Vadim", "note": 6},
+                { "student": "Maxim", "note": 7},
+                { "student": "Lucia", "note": 10},
+                { "student": "Alexander", "note": 9},
+                { "student": "Grigorii", "note": 7},
+                { "student": "Ivetta", "note": 8},
+                { "student": "Nina", "note": 6}
+            ];
+        });
+    </script>
+</body>
+</html>
