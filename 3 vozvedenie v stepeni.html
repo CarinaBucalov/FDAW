@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+      <h3>{{exp}}</h3>
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.service('expo', function () {
+            this.exponentiation = function (x) {
+                return x ** 3;
+            }  });
+        app.controller('myCtrl', function ($scope, expo) {
+            let x = 6;
+            $scope.exp = expo.exponentiation(x);
+        });
+    </script>
+</body>
+</html>

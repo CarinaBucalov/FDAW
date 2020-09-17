@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        1st Number: <input type="text" ng-model="first"><br>
+        2nd Number: <input type="text" ng-model="second"><br>
+        <h2 ng-click="result = first * second">Click to see the result</h2>
+        {{ result }}
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.result = 0;
+            $scope.first = 0;
+            $scope.second = 0;});
+    </script>
+</body>
+</html>

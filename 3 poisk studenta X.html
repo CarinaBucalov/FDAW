@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+    <div ng-app="myApp" ng-controller="arrController">
+        Name: <input type="text" ng-model="name"><br>
+        <ul>
+            <li ng-repeat="x in students | filter : {'name' : name}">{{x.name + ", " + x.surname + ", " + x.note}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('arrController', function ($scope) {
+            $scope.students = [
+      			{ "name": "Lucia", "surname": "Bucalov", "note": "7"},
+                { "name": "Alexander", "surname": "Spiridon", "note": "7"},
+                { "name": "Corina", "surname": "Stan", "note": "10" }, 
+                { "name": "Artiom", "surname": "Soloviov", "note": "8"},
+                { "name": "Vadim", "surname": "Ivanov", "note": "9"},
+                { "name": "Maxim", "surname": "Petrov", "note": "6"},
+                { "name": "Grigorii", "surname": "Baciu", "note": "5"},
+                { "name": "Nina", "surname": "Odajiu", "note": "7"},
+                { "name": "Ivetta", "surname": "Vasilii", "note": "6"}
+            ];   });
+    </script>
+</body>
+</html>
