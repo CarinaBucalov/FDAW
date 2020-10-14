@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>USM - Schedule HTML TEMPLATE</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="USM Schedule html template">
+	<meta name="keywords" content="industry, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href="img/favicon.ico" rel="shortcut icon" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i&display=swap"
+		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/magnific-popup.css" />
+	<link rel="stylesheet" href="css/owl.carousel.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+
+</head>
+
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl" class="text-center">
+		<div id="preloder">
+			<div class="loader"></div>
+		</div>
+
+		<div class="main-site-warp">
+			<div class="site-menu-warp">
+				<div class="close-menu">x</div>
+				<ul class="site-menu">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="contact.html" class="active">Contact</a></li>
+				</ul>
+				<div class="menu-social">
+					<a href=""><i class="fa fa-pinterest"></i></a>
+					<a href=""><i class="fa fa-facebook"></i></a>
+					<a href=""><i class="fa fa-twitter"></i></a>
+					<a href=""><i class="fa fa-dribbble"></i></a>
+					<a href=""><i class="fa fa-behance"></i></a>
+				</div>
+			</div>
+			<header class="header-section">
+				<div class="nav-switch">
+					<i class="fa fa-bars"></i>
+				</div>
+				<div class="header-social">
+					<a href=""><i class="fa fa-pinterest"></i></a>
+					<a href=""><i class="fa fa-facebook"></i></a>
+					<a href=""><i class="fa fa-twitter"></i></a>
+					<a href=""><i class="fa fa-dribbble"></i></a>
+					<a href=""><i class="fa fa-behance"></i></a>
+				</div>
+			</header>
+			<div class="site-content-warp">
+				<div class="main-sidebar">
+					<div class="mb-warp">
+						<a href="index.html" class="site-logo">
+							<h2>USM</h2>
+							<p>Schedule</p>
+						</a>
+						<div class="about-info">
+							<h2>My name is Carina Bucalov</h2>
+							<p>I am student in Moldavian State Unversity. I am studying Applied Informatics. 
+							In group IA - 1802. This is my 3rd and last year. </p>
+						</div>
+						<ul class="contact-info">
+							<li>Universitatea de Stat din Moldova str. Alexe Mateevici, 60 Chişinău, MD-2009 Republica
+								Moldova</li>
+							<li>022-244-810 </li>
+							<li>www.usm.md </li>
+							<li><a href="mailto:rector@usm.md">rector@usm.md</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="page-section contact-page">
+					<div class="contact-section">
+						<div class="row">
+							<div class="col-xl-6">
+								<div class="map"><iframe
+										src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10880.33945700017!2d28.8244912!3d47.0189392!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd8e8b74ac8c3ef7b!2z0JzQvtC70LTQsNCy0YHQutC40Lkg0JPQvtGB0YPQtNCw0YDRgdGC0LLQtdC90L3Ri9C5INCj0L3QuNCy0LXRgNGB0LjRgtC10YI!5e0!3m2!1sru!2s!4v1602618958655!5m2!1sru!2s"
+										style="border:0" allowfullscreen></iframe></div>
+							</div>
+							<div class="col-xl-6">
+								<div class="contact-text-warp">
+									<div class="contact-text">
+										<h2>Ask a question</h2>
+										<p>If you have a questions about your time, lessons,  classes or teachers - ask a question.  </p>
+									</div>
+									<form class="contact-form">
+										<div class="row">
+											<div class="col-lg-6">
+												<input ng-disabled="!agree" type="text" placeholder="Name">
+											</div>
+											<div class="col-lg-6">
+												<input ng-disabled="!agree" type="text" placeholder="E-mail">
+											</div>
+											<div class="col-lg-12">
+												<input ng-disabled="!agree" type="text" placeholder="Subject">
+												<textarea placeholder="Question"></textarea>
+												<label for="agree">I am agree with conditions:</label>
+												<input type="checkbox" id="agree" name="agree"  ng-model="agree">
+												<button ng-disabled="!agree" class="site-btn" ng-click="alertSubmit()">send question <img src="img/arrow-right.png"
+														alt=""></button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script src="js/circle-progress.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/main.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="js/controller.js"></script>
+
+</body>
+
+</html>

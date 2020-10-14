@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Schedule - individual work</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Schedule - individual work">
+    <meta name="keywords" content="industry, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="img/books-icon.png" rel="shortcut icon" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        <div id="preloder">
+            <div class="loader"></div>
+        </div>
+
+        <div class="main-site-warp">
+            <div class="site-menu-warp">
+                <div class="close-menu">x</div>
+                <ul class="site-menu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="menu-social">
+                    <a href=""><i class="fa fa-pinterest"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-dribbble"></i></a>
+                    <a href=""><i class="fa fa-behance"></i></a>
+                </div>
+            </div>
+            <header class="header-section">
+                <div class="nav-switch">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <div class="header-social">
+                    <div ng-show="isSigned == false">
+                        <my-directive></my-directive>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Login
+                        </button>
+                    </div>
+                    <a href=""><i class="fa fa-pinterest"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-dribbble"></i></a>
+                    <a href=""><i class="fa fa-behance"></i></a>
+                </div>
+            </header>
+            <div class="site-content-warp">
+                <div class="row ml-2 mt-5">
+                    <div class="col-md-3">
+                        <label class="mt-3" for="name">Please Enter Lesson Name:</label> <input type="text"
+                            ng-model="name" id="name" name="name" class="form-control mt-2">
+                        <h6 class="mt-2 mb-3">You search: {{name}}</h6>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="mt-3" for="day">Select day:</label>
+                        <select ng-model="selectedDay" class="mt-2 form-control" id="day" name="day">
+                            <option ng-repeat="x in days" value="{{x.val}}">{{x.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <button ng-show="isSigned == true" type="button" class="btn btn-primary mt-5 ml-4"
+                            data-toggle="modal" data-target="#addLesson">
+                            Add lesson
+                        </button>
+                    </div>
+                </div>
+                <div class="main-sidebar">
+                    <div class="mb-warp">
+                        <a href="index.html" class="site-logo">
+                            <h2>USM</h2>
+                            <p>Schedule</p>
+                        </a>
+                        <div class="about-info">
+                            <h2>My name is Carina Bucalov</h2>
+                            <p>I am student in Moldavian State Unversity. I am studying Applied Informatics. 
+							In group IA - 1802. This is my 3rd and last year.  </p>
+                        </div>
+                        <ul class="contact-info">
+                            <li>Universitatea de Stat din Moldova str. Alexe Mateevici, 60 Chişinău, MD-2009 Republica
+                                Moldova</li>
+                            <li>022-244-810 </li>
+                            <li>www.usm.md </li>
+                            <li><a href="mailto:rector@usm.md">rector@usm.md</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="page-section">
+
+                    <div class="hero-section">
+                        <div class="hero-scroll">
+                            <div class="hero-track width-hero">
+                                <div ng-repeat="schedule in getDay((selectedDay > -1) ? selectedDay : 0) | filter : {lesson: name} | orderBy : 'time'"
+                                    class="hs-item set-bg" data-setbg="img/hero/1.jpeg">
+                                    <div class="hs-info">
+                                        <h5>{{ schedule.lesson}}</h5>
+                                        <p>{{schedule.teacher}} {{schedule.time}}</p>
+                                        <a href="#"><img src="{{ schedule.image}}" alt=""></a>
+                                        <button ng-show="isSigned == true" type="button"
+                                            class="btn btn-primary mb-4 mt-4 ml-4" ng-click="removeLesson(((selectedDay > -1) ? selectedDay : 0), schedule.lesson)">
+                                            Remove
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form name="myForm" ng-submit="login()">
+                        <div class="modal-body">
+                            Login: <input type="text" name="my_login" ng-model="my_login" class="form-control"
+                                required><br>
+                            Password: <input type="text" name="password" ng-model="password" class="form-control"
+                                required><br>
+                            <span ng-show="myForm.my_login.$touched && myForm.my_login.$invalid">The login is
+                                required!!</span>
+                            </br>
+                            <span ng-show="myForm.password.$touched && myForm.password.$invalid">The password is
+                                required!!</span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="addLesson" tabindex="-1" role="dialog" aria-labelledby="addLessonLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" style="text-align: right;" data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <section class="site-section darken-bg" id="section-contact">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-8">
+                                    <h2>Add new Item</h2>
+
+                                    <form name="add-item-form" action="#">
+
+                                        <div class="row form-group">
+                                            <div class="col-md-6 mb-3 mb-md-0">
+                                                <label for="add_lesson_">Lesson</label>
+                                                <input type="text" id="add_lesson_" class="form-control"
+                                                    ng-model='add_lesson'>
+                                            </div>
+                                            <div class="col-md-6 mb-3 mb-md-0">
+                                                <label for="add_teacher_">Teacher</label>
+                                                <input type="text" id="add_teacher_" class="form-control"
+                                                    ng-model='add_teacher'>
+                                            </div>
+                                            <div class="col-md-6 mb-3 mb-md-0">
+                                                <label for="add_time_">Time</label>
+                                                <input type="text" id="add_time_" class="form-control"
+                                                    ng-model='add_time'>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="add_img_">Schedule image</label>
+                                                <input type="text" id="add_img_" class="form-control"
+                                                    ng-model='add_img'>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary"
+                            ng-click="addLesson((selectedDay > -1) ? selectedDay : 0)">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/circle-progress.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/controller.js"></script>
+
+</body>
+
+</html>

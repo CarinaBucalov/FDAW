@@ -1,45 +1,16 @@
 <!DOCTYPE html>
 <html>
-<style>
-    table,
-    th,
-    td {
-        border: 1px solid black;
-        border-collapse: collapse;
-        padding: 9px;
-    }
-    table tr:nth-child(odd) {
-        background-color: #4444;
-    }
-    table tr:nth-child(even) {
-        background-color: #abc;
-    }
-</style>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <body>
-    <div ng-app="myApp" ng-controller="customersCtrl">
-        <table>
-            <tr ng-repeat="x in students">
-                <td>{{ x.name }}</td>
-                <td>{{ x.surname }}</td>
-                <td>{{ x.note }}</td>
-            </tr>
-        </table>
-    </div>
-    <script>
-        var app = angular.module('myApp', []);
-        app.controller('customersCtrl', function ($scope, $http) {
-            // $http.get("customers.php")
-            //     .then(function (response) { $scope.names = response.data.records; });
-            $scope.students = [
- 	 { "name": "Lucia", "surname": "Bucalov", "note": "7"},
-                { "name": "Alexander", "surname": "Spiridon", "note": "7"},
-                { "name": "Corina", "surname": "Stan", "note": "10" }, 
-                { "name": "Artiom", "surname": "Soloviov", "note": "8"},
-                { "name": "Vadim", "surname": "Ivanov", "note": "9"},
-                { "name": "Maxim", "surname": "Petrov", "note": "6"},
-                { "name": "Grigorii", "surname": "Baciu", "note": "5"},
-                { "name": "Nina", "surname": "Odajiu", "note": "7"},
-                { "name": "Ivetta", "surname": "Vasilii", "note": "6"}	
-            ]; });
-    </script> </body> </html>
+
+<div ng-app="">
+ 
+<p>Input something in the input box:</p>
+<p>Name: <input type="text" ng-model="name"></p>
+<p ng-bind="name"></p>
+
+</div>
+
+</body>
+</html>
+
